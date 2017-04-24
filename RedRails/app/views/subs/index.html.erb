@@ -1,0 +1,9 @@
+<h3>All Subs</h3>
+<br />
+<% Sub.all.each do |s| %>
+  <%= link_to s.title, sub_url(s) %>
+  <%= link_to "Edit", edit_sub_url(s) if current_user && s.user_id == current_user.id %>
+  <br  />
+<% end %>
+<br />
+<%= button_to "Create Sub", new_sub_url, method: :get %>

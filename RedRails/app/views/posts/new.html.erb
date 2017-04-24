@@ -1,0 +1,10 @@
+<h4>Create Post</h4>
+<form action=" <%= sub_posts_url %>" method="post">
+  <%= auth_token %>
+  <input type="text" name="post[title]" placeholder="title" />
+  <input type="text" name="post[url]" placeholder="url" />
+  <br /><br />
+  <textarea name="post[content]" placeholder="content"></textarea>
+  <br />
+  <input type="submit" value="Submit Post" />
+</form>

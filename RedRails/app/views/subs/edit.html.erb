@@ -1,0 +1,14 @@
+<h3>Edit Sub</h3>
+
+<form action="<%= sub_url %>" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <%= auth_token %>
+  <input type="text" name="sub[title]"
+         placeholder="title"
+         value="<%= @sub.title if @sub %>"/>
+  <br /><br />
+  <textarea name="sub[description]"
+            placeholder="describe sub..."><%= @sub.description if @sub %></textarea>
+  <br /><br />
+  <input type="submit" value="Update sub" />
+</form>

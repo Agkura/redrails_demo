@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedRails</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div style="float: left; width: auto;">
+        <% if current_user  %>
+          <%= log_out %>
+        <% else %>
+          <%= log_in unless action_name == "new" && controller_name == "sessions" %>
+        <% end %>
+      </div>
+      <div style="float: left; width: auto;">
+      <%= button_to "Sign Up", new_user_url, method: :get unless current_user %>
+      </div>
+      <div style="float: left; width: auto;">
+        <%= button_to "All Subs", subs_url, method: :get unless action_name == "index" && controller_name == "subs" %>
+      </div>
+      <div style="float: left; width: auto;">
+        <% if action_name == "show" && controller_name == "subs" %>
+          <%= button_to "Edit", edit_sub_url(@sub), method: :get if current_user && current_user.id == @sub.user_id %>
+        <% end %>
+      </div>
+      <% if flash[:errors] %>
+        <%= "Errors" %>
+        <br />
+        <% flash[:errors].each do |error| %>
+          <%= error %>
+        <% end %>
+      <% end %>
+      <br />
+
+    </header>
+
+    <%= yield %>
+    <footer>
+      <br /><br />
+      <%= link_to current_user.username, user_url(current_user) if logged_in? %>
+    </footer>
+  </body>
+</html>

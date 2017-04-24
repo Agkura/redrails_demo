@@ -1,0 +1,13 @@
+<br />
+<% if current_user == @user %>
+  <%= "Welcome, #{@user.username}" %>
+<% else %>
+  <%= "#{@user}\s Moderated Subs" %>
+<% end %>
+
+<h4>Moderated Subs</h4>
+<% @user.subs.each do |s| %>
+  <%= link_to s.title, sub_url(s) %>
+<% end %>
+
+<h4>Posts</h4>

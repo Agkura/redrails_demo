@@ -1,0 +1,9 @@
+<h3><%= @sub.title %></h3>
+<h4><%= @sub.description %></h4>
+<h4>All posts</h4>
+<% @sub.posts.each do |post| %>
+  <%= link_to post.title, sub_post_url(id: post.id, sub_id: @sub.id) %>
+  <br />
+<% end %>
+<br />
+<%= button_to "Add Post", new_sub_post_url(@sub), method: :get %>

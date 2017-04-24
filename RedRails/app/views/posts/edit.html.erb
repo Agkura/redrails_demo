@@ -1,0 +1,12 @@
+<h4>Edit Post</h4>
+<% post = @post ?  @post : Post.new %>
+<form action=" <%= sub_post_url %>" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <%= auth_token %>
+  <input type="text" name="post[:title]" placeholder="title" value="<%= post.title %>"/>
+  <input type="text" name="post[:url]" placeholder="url" value="<%= post.url %>"/>
+  <br /><br />
+  <textarea name="post[:content]" placeholder="content"><%= post.title %></textarea>
+  <br />
+  <input type="submit" value="Update Post" />
+</form>

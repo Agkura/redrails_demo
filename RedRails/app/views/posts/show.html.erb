@@ -1,0 +1,13 @@
+<br />
+<%= button_to "sub: #{@post.sub.title}", sub_url(@post.sub_id), method: :get %>
+<h4><%= @post.title %></h4>
+<%= "source: #{@post.url}" unless @post.url == "" %>
+<br />
+<%= "by: #{@post.author.username}" %>
+<br /> <br />
+<%= "\"#{@post.content}\"" %>
+<br />
+<div style="float: left; width: auto;">
+<%= button_to "delete post", sub_post_url, method: :delete if @post.author_id == current_user.id || @post.moderator == current_user %>
+</div>
+<%= button_to "edit post", edit_sub_post_url, method: :get if @post.author_id == current_user.id || @post.moderator == current_user %>
