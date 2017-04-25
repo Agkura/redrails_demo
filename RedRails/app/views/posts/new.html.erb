@@ -1,10 +1,17 @@
 <h4>Create Post</h4>
 <form action=" <%= sub_posts_url %>" method="post">
   <%= auth_token %>
+  <input type="hidden" name="post[sub_ids][]" value="" />
   <input type="text" name="post[title]" placeholder="title" />
   <input type="text" name="post[url]" placeholder="url" />
   <br /><br />
   <textarea name="post[content]" placeholder="content"></textarea>
   <br />
+  <% Sub.all.each do |subs| %>
+    <label><%= subs.title %>
+    <input type="checkbox" value="<%= subs.id %>" name="post[sub_ids][]">
+    </label>
+    <br />
+  <% end %>
   <input type="submit" value="Submit Post" />
 </form>
